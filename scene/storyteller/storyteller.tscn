@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=1]
+[gd_scene load_steps=5 format=1]
 
-[ext_resource path="res://scene/storyteller.gd" type="Script" id=1]
+[ext_resource path="res://scene/storyteller/storyteller.gd" type="Script" id=1]
 [ext_resource path="res://res/notosans.tres" type="DynamicFont" id=2]
 [ext_resource path="res://scene/storyteller/dialog.gd" type="Script" id=3]
+[ext_resource path="res://scene/storyteller/input_handler.gd" type="Script" id=4]
 
 [node name="storyteller" type="Control"]
 
@@ -21,13 +22,6 @@ __meta__ = {
 "_edit_lock_": true
 }
 script = "res://project/script/main.gd"
-
-[node name="timer" type="Timer" parent="."]
-
-process_mode = 1
-wait_time = 1.0
-one_shot = false
-autostart = false
 
 [node name="img_bg" type="Control" parent="."]
 
@@ -57,7 +51,6 @@ margin/bottom = 0.0
 
 [node name="dialog" type="RichTextLabel" parent="."]
 
-editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
@@ -70,14 +63,37 @@ custom_fonts/normal_font = ExtResource( 2 )
 bbcode/enabled = true
 bbcode/bbcode = ""
 visible_characters = -1
-percent_visible = 1.0
 script/script = ExtResource( 3 )
+
+[node name="timer" type="Timer" parent="dialog"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = false
 
 [node name="cursor" type="Sprite" parent="dialog"]
 
 visibility/visible = false
 transform/pos = Vector2( -2, -372 )
 
-[connection signal="next" from="dialog" to="." method="execute"]
+[node name="input_handler" type="Control" parent="."]
+
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 0.0
+margin/bottom = 0.0
+script/script = ExtResource( 4 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[connection signal="next" from="input_handler" to="." method="next"]
 
 
