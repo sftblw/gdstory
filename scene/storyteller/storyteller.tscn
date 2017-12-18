@@ -23,7 +23,7 @@ script/script = ExtResource( 1 )
 __meta__ = {
 "_edit_lock_": true
 }
-script = "res://project/script/main.gd"
+main_script = "res://project/script/main.gd"
 
 [node name="bg_layer" type="Control" parent="."]
 

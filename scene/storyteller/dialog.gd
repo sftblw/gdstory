@@ -9,6 +9,12 @@ func _ready():
 
 ## apis
 
+# write string
+func write(text):
+	for l in text:
+		letters_left.append(l)
+	set_process(true)
+	
 # write one line of string
 func writeln(text):
 	for l in text:
