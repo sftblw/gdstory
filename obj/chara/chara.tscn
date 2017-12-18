@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=1]
+
+[ext_resource path="res://project/standing/mirae_normal.png" type="Texture" id=1]
+
+[node name="chara" type="Node2D"]
+
+transform/pos = Vector2( 526.316, 598.338 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="img_normal" type="Sprite" parent="."]
+
+texture = ExtResource( 1 )
+centered = false
+offset = Vector2( -128, -500 )
+
+

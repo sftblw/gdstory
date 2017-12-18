@@ -1,16 +1,21 @@
 extends "res://gdstory/gdstoryscript.gd"
 
 func run():
-	dialogln("비가 오는 날이었다."); yield()
-	dialogln("맑은 하늘이었으면 좋았으련만."); yield()
-	dialogClean()
+#	b1() # 인트로
+#
+#func b1(): # 인트로
+#	img["bg"].color = "black"
+#	chara.new("미래")
+#	chara["미래"].color = "black"
+#	chara["미래"].img["미소"] = preload("res://img/mirae_smile.png")
+
+#	dialog.name(chara["미래"].name)
+	dialogln("환영합니다!")
+	yield(); dialogln("gdstory는 Godot 엔진 기반의")
+	dialogln("비주얼 노벨 엔진 & 프레임워크입니다.")
 	
-	dialogln("하필이면 내가 미끄러졌을 때 내 눈 앞에는 그녀가 있었고,")
-	dialogln("뒤에 일어난 일은 내 기분을 처참하게 만들었다."); yield()
-	dialogClean()
+	yield(); dialogClean()
 	
-	chara("미예");
-	charaImg("미예", "res://project/standing/miye.png")
-	charaNameplate("미예, 부딪힌 사람")
-	
+#	dialog.ln("보고싶은 내용을 선택해주세요.")
+
 	return null

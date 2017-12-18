@@ -24,6 +24,6 @@ func next():
 		ctx = ctx.resume()
 
 # script APIs
-onready var dialog = get_node("dialog")
+onready var dialog = get_node("dialog_layer/dialog")
 func dialogln(text): dialog.writeln(text)
 func dialogClean(): dialog.clean()

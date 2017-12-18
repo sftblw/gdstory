@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=1]
+[gd_scene load_steps=7 format=1]
 
 [ext_resource path="res://scene/storyteller/storyteller.gd" type="Script" id=1]
-[ext_resource path="res://res/notosans.tres" type="DynamicFont" id=2]
-[ext_resource path="res://scene/storyteller/dialog.gd" type="Script" id=3]
-[ext_resource path="res://scene/storyteller/input_handler.gd" type="Script" id=4]
+[ext_resource path="res://project/background/bg.jpg" type="Texture" id=2]
+[ext_resource path="res://obj/chara/chara.tscn" type="PackedScene" id=3]
+[ext_resource path="res://res/notosans.tres" type="DynamicFont" id=4]
+[ext_resource path="res://scene/storyteller/dialog.gd" type="Script" id=5]
+[ext_resource path="res://scene/storyteller/input_handler.gd" type="Script" id=6]
 
 [node name="storyteller" type="Control"]
 
@@ -23,7 +25,7 @@ __meta__ = {
 }
 script = "res://project/script/main.gd"
 
-[node name="img_bg" type="Control" parent="."]
+[node name="bg_layer" type="Control" parent="."]
 
 anchor/right = 1
 anchor/bottom = 1
@@ -36,8 +38,44 @@ margin/top = 0.0
 margin/right = 0.0
 margin/bottom = 0.0
 
-[node name="img_chara" type="Control" parent="."]
+[node name="bg" type="Sprite" parent="bg_layer"]
 
+transform/scale = Vector2( 0.556671, 0.556671 )
+texture = ExtResource( 2 )
+centered = false
+
+[node name="chara_layer" type="Control" parent="."]
+
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = -1.0
+margin/top = 6.0
+margin/right = 1.0
+margin/bottom = -6.0
+
+[node name="chara" parent="chara_layer" instance=ExtResource( 3 )]
+
+[node name="dialog_layer" type="Control" parent="."]
+
+anchor/top = 1
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 200.0
+margin/right = 0.0
+margin/bottom = 0.0
+
+[node name="backpanel" type="Panel" parent="dialog_layer"]
+
+visibility/opacity = 0.5
 anchor/right = 1
 anchor/bottom = 1
 focus/ignore_mouse = false
@@ -49,30 +87,32 @@ margin/top = 0.0
 margin/right = 0.0
 margin/bottom = 0.0
 
-[node name="dialog" type="RichTextLabel" parent="."]
+[node name="dialog" type="RichTextLabel" parent="dialog_layer"]
 
+anchor/right = 1
+anchor/bottom = 1
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 2.0
-margin/top = 372.0
-margin/right = 1022.0
-margin/bottom = 594.0
-custom_fonts/normal_font = ExtResource( 2 )
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 0.0
+margin/bottom = 0.0
+custom_fonts/normal_font = ExtResource( 4 )
 bbcode/enabled = true
 bbcode/bbcode = ""
 visible_characters = -1
-script/script = ExtResource( 3 )
+script/script = ExtResource( 5 )
 
-[node name="timer" type="Timer" parent="dialog"]
+[node name="timer" type="Timer" parent="dialog_layer/dialog"]
 
 process_mode = 1
 wait_time = 1.0
 one_shot = false
 autostart = false
 
-[node name="cursor" type="Sprite" parent="dialog"]
+[node name="cursor" type="Sprite" parent="dialog_layer/dialog"]
 
 visibility/visible = false
 transform/pos = Vector2( -2, -372 )
@@ -89,7 +129,7 @@ margin/left = 0.0
 margin/top = 0.0
 margin/right = 0.0
 margin/bottom = 0.0
-script/script = ExtResource( 4 )
+script/script = ExtResource( 6 )
 __meta__ = {
 "_edit_lock_": true
 }
