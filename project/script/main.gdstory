@@ -1,11 +1,30 @@
 # 인트로
 
-/img/ bg = #black
-/chara/ [미래](ㅁ) #black
-+ #black
-+ (미소) 
+>>>
+// kind ident(main prop) { detailed_prop_name detailed_prop_val, ... }
 
-[미래]
+// pos bottom(0, 0.5)
+
+// ani fadein("project/ani/fadein.tres")
+// ani blink("project/ani/blink.tres")
+// ani fadeout("project/ani/fadeout.tres")
+
+image 미래_통상("project/standing/mirae_normal.png") {
+  // @-> fadein, @@@ blink, ->@ fadeout, * bottom
+}
+
+chara 미래("정 미래") as ㅁ {
+  normal 미래_통상,
+  smile (image("project/standing/mirae_smile.png")) // expression인 경우에는 ident 선언 불가
+}
+
+bg 동물원(image("project/background/bg.jpg")) as ㄷ
+<<<
+
+> show bg 동물원
+> show chara 미래
+
+[미래] // 혹은 ["미래"]
 환영합니다!
 gdstory는 Godot 엔진 기반의
 _비주얼 노벨 엔진 & 프레임워크입니다.

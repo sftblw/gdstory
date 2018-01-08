@@ -1,13 +1,14 @@
-[gd_scene load_steps=9 format=1]
+[gd_scene load_steps=10 format=1]
 
 [ext_resource path="res://scene/storyteller/storyteller.gd" type="Script" id=1]
 [ext_resource path="res://project/background/bg.jpg" type="Texture" id=2]
-[ext_resource path="res://obj/chara/chara.tscn" type="PackedScene" id=3]
-[ext_resource path="res://addons/labeldialog/labeldialog.gd" type="Script" id=4]
-[ext_resource path="res://addons/labeldialog/labeldialog.png" type="Texture" id=5]
-[ext_resource path="res://res/notosans.tres" type="DynamicFont" id=6]
-[ext_resource path="res://project/object/letter_label.tscn" type="PackedScene" id=7]
-[ext_resource path="res://scene/storyteller/input_handler.gd" type="Script" id=8]
+[ext_resource path="res://project/standing/mirae_normal.png" type="Texture" id=3]
+[ext_resource path="res://obj/chara/chara.tscn" type="PackedScene" id=4]
+[ext_resource path="res://addons/labeldialog/labeldialog.gd" type="Script" id=5]
+[ext_resource path="res://addons/labeldialog/labeldialog.png" type="Texture" id=6]
+[ext_resource path="res://res/notosans.tres" type="DynamicFont" id=7]
+[ext_resource path="res://project/object/letter_label.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scene/storyteller/input_handler.gd" type="Script" id=9]
 
 [node name="storyteller" type="Control"]
 
@@ -40,11 +41,38 @@ margin/top = 0.0
 margin/right = 0.0
 margin/bottom = 0.0
 
-[node name="bg" type="Sprite" parent="bg_layer"]
+[node name="[sample] bg" type="Control" parent="bg_layer"]
 
-transform/scale = Vector2( 0.556671, 0.556671 )
+visibility/visible = false
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 0.0
+margin/bottom = 0.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="image" type="TextureFrame" parent="bg_layer/[sample] bg"]
+
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 0.0
+margin/bottom = 0.0
 texture = ExtResource( 2 )
-centered = false
+expand = true
+stretch_mode = 7
 
 [node name="chara_layer" type="Control" parent="."]
 
@@ -54,12 +82,45 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = -1.0
-margin/top = 6.0
-margin/right = 1.0
-margin/bottom = -6.0
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 0.0
+margin/bottom = 0.0
 
-[node name="chara" parent="chara_layer" instance=ExtResource( 3 )]
+[node name="[sample] mirae" type="Control" parent="chara_layer"]
+
+visibility/visible = false
+anchor/top = 1
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 512.0
+margin/top = 0.0
+margin/right = 512.0
+margin/bottom = 0.0
+
+[node name="일반" type="TextureFrame" parent="chara_layer/[sample] mirae"]
+
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = -128.0
+margin/top = -500.0
+margin/right = -128.0
+margin/bottom = 0.0
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 6
+
+[node name="chara_first" parent="chara_layer" instance=ExtResource( 4 )]
+
+visibility/visible = false
 
 [node name="dialog_layer" type="Control" parent="."]
 
@@ -102,14 +163,14 @@ margin/left = 0.0
 margin/top = 200.0
 margin/right = 0.0
 margin/bottom = 0.0
-script/script = ExtResource( 4 )
+script/script = ExtResource( 5 )
 __meta__ = {
-"_editor_icon": ExtResource( 5 )
+"_editor_icon": ExtResource( 6 )
 }
 text = ""
-dynamic_font = ExtResource( 6 )
+dynamic_font = ExtResource( 7 )
 default_font_size = 20
-letter_scene = ExtResource( 7 )
+letter_scene = ExtResource( 8 )
 delay_origin = 0.05
 
 [node name="cursor" type="Sprite" parent="dialog_layer"]
@@ -129,7 +190,7 @@ margin/left = 0.0
 margin/top = 0.0
 margin/right = 0.0
 margin/bottom = 0.0
-script/script = ExtResource( 8 )
+script/script = ExtResource( 9 )
 __meta__ = {
 "_edit_lock_": true
 }
