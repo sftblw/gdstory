@@ -10,7 +10,7 @@ config_version=3
 
 [application]
 
-config/name="iyagi_engine"
+config/name="gdstory"
 run/main_scene="res://scene/storyteller/storyteller.tscn"
 config/icon="res://icon.png"
 
