@@ -1,16 +1,16 @@
-TODO: fill description, make first working somewhat
+# GDStory (Early Experimental Stage)
 
-intended to create visual novel engine? framework? player? via Godot Engine 2 and tries to compile to its gdscript and tries to utilize its editor fully
+Warning: This repository is in very early experimental state and main branch is just a dirty *sandbox*.
 
-with incremental smaaaaaaaaaaaaaaaaaaal development size (but It gets larger and larger to not to be finished oh my god)
+GDStory will be an experimental Visual Novel framework & engine for and by Godot Engine.
 
-Utilizing godot engine is good for game engines because...
+## Main Ideas and Objectives
 
-- Cross-Platform including mobile area
-- Awesome animation editor
-
-Converting own script to gdscript comes with awesome advantage:
-
-- compile-time compression of script?
-- locking scripts to be edited and extracted?
-- amuton tonikaku it's awesome because I say it's awesome. no other words please. It's royal order.
+- Utilize Godot Engine to the good point
+  - StoryScript → GDScript conversion : no compilation, cross-platform
+  - Implement all in GDScript : good integrity
+  - Use Godot Engine to build: UI, Animations
+- Provide
+  - fully funtional visual novel engine
+  - framework to use all or some part in your game
+  - editor for genre-specific script only game creation
