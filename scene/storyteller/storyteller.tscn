@@ -1,196 +1,162 @@
-[gd_scene load_steps=10 format=1]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scene/storyteller/storyteller.gd" type="Script" id=1]
-[ext_resource path="res://project/background/bg.jpg" type="Texture" id=2]
-[ext_resource path="res://project/standing/mirae_normal.png" type="Texture" id=3]
-[ext_resource path="res://obj/chara/chara.tscn" type="PackedScene" id=4]
-[ext_resource path="res://addons/labeldialog/labeldialog.gd" type="Script" id=5]
-[ext_resource path="res://addons/labeldialog/labeldialog.png" type="Texture" id=6]
-[ext_resource path="res://res/notosans.tres" type="DynamicFont" id=7]
-[ext_resource path="res://project/object/letter_label.tscn" type="PackedScene" id=8]
-[ext_resource path="res://scene/storyteller/input_handler.gd" type="Script" id=9]
+[ext_resource path="res://addons/gdimage/gdimage.png" type="Texture" id=2]
+[ext_resource path="res://obj/chara/chara.tscn" type="PackedScene" id=3]
+[ext_resource path="res://addons/labeldialog/labeldialog.gd" type="Script" id=4]
+[ext_resource path="res://addons/labeldialog/labeldialog.png" type="Texture" id=5]
+[ext_resource path="res://res/notosans.tres" type="DynamicFont" id=6]
+[ext_resource path="res://project/object/letter_label.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scene/storyteller/input_handler.gd" type="Script" id=8]
 
-[node name="storyteller" type="Control"]
+[node name="storyteller" type="Control" index="0"]
 
-anchor/right = 1
-anchor/bottom = 1
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 0.0
-margin/top = 0.0
-margin/right = 0.0
-margin/bottom = 0.0
-script/script = ExtResource( 1 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+script = ExtResource( 1 )
+_sections_unfolded = [ "Margin" ]
 __meta__ = {
 "_edit_lock_": true
 }
 main_script = "res://project/script/main.gd"
 
-[node name="bg_layer" type="Control" parent="."]
+[node name="bg_layer" type="Control" parent="." index="0"]
 
-anchor/right = 1
-anchor/bottom = 1
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 0.0
-margin/top = 0.0
-margin/right = 0.0
-margin/bottom = 0.0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Margin" ]
 
-[node name="[sample] bg" type="Control" parent="bg_layer"]
+[node name="[sample] bg" type="Control" parent="bg_layer" index="0"]
 
-visibility/visible = false
-anchor/right = 1
-anchor/bottom = 1
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 0.0
-margin/top = 0.0
-margin/right = 0.0
-margin/bottom = 0.0
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="image" type="TextureFrame" parent="bg_layer/[sample] bg"]
+[node name="chara_layer" type="Control" parent="." index="1"]
 
-anchor/right = 1
-anchor/bottom = 1
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 0.0
-margin/top = 0.0
-margin/right = 0.0
-margin/bottom = 0.0
-texture = ExtResource( 2 )
-expand = true
-stretch_mode = 7
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Rect" ]
 
-[node name="chara_layer" type="Control" parent="."]
+[node name="[sample] mirae" type="Control" parent="chara_layer" index="0"]
 
-anchor/right = 1
-anchor/bottom = 1
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 0.0
-margin/top = 0.0
-margin/right = 0.0
-margin/bottom = 0.0
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 512.0
+margin_top = 600.0
+margin_right = 512.0
+margin_bottom = 600.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Anchor", "Margin", "Rect" ]
 
-[node name="[sample] mirae" type="Control" parent="chara_layer"]
+[node name="anchoredImage" type="Position2D" parent="chara_layer/[sample] mirae" index="0"]
 
-visibility/visible = false
-anchor/top = 1
-anchor/right = 1
-anchor/bottom = 1
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 512.0
-margin/top = 0.0
-margin/right = 512.0
-margin/bottom = 0.0
+_sections_unfolded = [ "Transform", "Z" ]
 
-[node name="일반" type="TextureFrame" parent="chara_layer/[sample] mirae"]
+[node name="GDImage" type="Position2D" parent="chara_layer/[sample] mirae" index="1"]
 
-anchor/right = 1
-anchor/bottom = 1
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = -128.0
-margin/top = -500.0
-margin/right = -128.0
-margin/bottom = 0.0
-texture = ExtResource( 3 )
-expand = true
-stretch_mode = 6
-
-[node name="chara_first" parent="chara_layer" instance=ExtResource( 4 )]
-
-visibility/visible = false
-
-[node name="dialog_layer" type="Control" parent="."]
-
-anchor/top = 1
-anchor/right = 1
-anchor/bottom = 1
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 0.0
-margin/top = 200.0
-margin/right = 0.0
-margin/bottom = 0.0
-
-[node name="backpanel" type="Panel" parent="dialog_layer"]
-
-visibility/opacity = 0.5
-anchor/right = 1
-anchor/bottom = 1
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 0.0
-margin/top = 0.0
-margin/right = 0.0
-margin/bottom = 0.0
-
-[node name="dialog" type="Control" parent="dialog_layer"]
-
-anchor/top = 1
-anchor/right = 1
-anchor/bottom = 1
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 0.0
-margin/top = 200.0
-margin/right = 0.0
-margin/bottom = 0.0
-script/script = ExtResource( 5 )
+_sections_unfolded = [ "Transform" ]
 __meta__ = {
-"_editor_icon": ExtResource( 6 )
+"_editor_icon": ExtResource( 2 )
+}
+
+[node name="chara_first" parent="chara_layer" index="1" instance=ExtResource( 3 )]
+
+visible = false
+
+[node name="dialog_layer" type="Control" parent="." index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+[node name="backpanel" type="Panel" parent="dialog_layer" index="0"]
+
+modulate = Color( 1, 1, 1, 0.502745 )
+anchor_left = 0.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -200.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Anchor", "Margin", "Rect", "Visibility" ]
+
+[node name="dialog" type="Control" parent="dialog_layer" index="1"]
+
+anchor_left = 0.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -200.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+script = ExtResource( 4 )
+_sections_unfolded = [ "Rect" ]
+__meta__ = {
+"_editor_icon": ExtResource( 5 )
 }
 text = ""
-dynamic_font = ExtResource( 7 )
+dynamic_font = ExtResource( 6 )
 default_font_size = 20
-letter_scene = ExtResource( 8 )
+letter_scene = ExtResource( 7 )
 delay_origin = 0.05
 
-[node name="cursor" type="Sprite" parent="dialog_layer"]
+[node name="cursor" type="Sprite" parent="dialog_layer" index="2"]
 
-visibility/visible = false
-transform/pos = Vector2( -2, -372 )
+[node name="input_handler" type="Control" parent="." index="3"]
 
-[node name="input_handler" type="Control" parent="."]
-
-anchor/right = 1
-anchor/bottom = 1
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 0.0
-margin/top = 0.0
-margin/right = 0.0
-margin/bottom = 0.0
-script/script = ExtResource( 9 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+script = ExtResource( 8 )
 __meta__ = {
 "_edit_lock_": true
 }

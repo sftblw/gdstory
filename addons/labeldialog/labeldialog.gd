@@ -24,7 +24,7 @@ func _ready():
 	if text.length() > 0:
 		write(text)
 
-	if not get_tree().is_editor_hint():
+	if not Engine.is_editor_hint():
 		__clear()
 		set_process(true)
 	else:
@@ -58,7 +58,7 @@ func flush():
 	
 # write letter by letter
 func _process(delta):
-	if letters_left != '' and is_writing == false:
+	if letters_left.size() > 0 and is_writing == false:
 		is_writing = true
 		_delay = delay_origin
 		__render()
@@ -83,9 +83,9 @@ func __render():
 		
 		# set cursor to next line when (\n or overflow)
 		if letter == "\n\r" or letter == "\n" \
-			or cursor_pos.x + letter_size.x >= get_size().width:
+			or cursor_pos.x + letter_size.x >= get_size().x: # get_size().x is width
 			
-			if cursor_pos.x + letter_size.x >= get_size().width:
+			if cursor_pos.x + letter_size.x >= get_size().x: # get_size().x is width
 				letters_left.push_front(letter)
 			
 			col_row.y += 1; col_row.x = 0
@@ -102,14 +102,14 @@ func __render():
 		# create letter by label
 		var label = null
 		var container = Control.new()
-		if letter_scene == null or get_tree().is_editor_hint():
+		if letter_scene == null or Engine.is_editor_hint():
 			label = Label.new()
 		else:
 			label = letter_scene.instance()
 		
 		label.add_font_override( "font", dynamic_font.duplicate( false ) )
 		label.set_text(letter)
-		container.set_pos(cursor_pos)
+		container.rect_position = cursor_pos
 		label.set_size(letter_size)
 		container.set_size(letter_size)
 		
@@ -127,7 +127,7 @@ func __render():
 		#dynamic_font.set_size( 15 + randi() % 10 )
 		
 		# wait before write next letter  # and not on editor
-		if _delay != 0 and letters_left.size() != 0 and not get_tree().is_editor_hint():
+		if _delay != 0 and letters_left.size() != 0 and not Engine.is_editor_hint():
 			write_timer.set_wait_time( _delay )
 			write_timer.start()
 			yield( write_timer, "timeout")
@@ -137,7 +137,7 @@ func __render():
 # in editor, draw all letters instantly
 func _draw():
 	# for editor
-	if get_tree().is_editor_hint():
+	if Engine.is_editor_hint():
 		clean()
 		if text.length() > 0:
 			write(text)
@@ -147,5 +147,5 @@ func _draw():
 # free all children
 func __clear():
 	for child in get_children():
-		if not child extends Timer:
+		if not child is Timer:
 			child.queue_free()

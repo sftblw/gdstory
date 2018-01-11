@@ -73,13 +73,13 @@ func _interpret():
 		elif opcode == Opcode.pop:
 			_stack_pop()
 		elif opcode == Opcode.image_new:
-			var image = TextureFrame.new()
+			var image = TextureRect.new()
 			image.set_texture( instruction[1] )
 			image.hide()
 			_stack.push_back(image)
 		elif opcode == Opcode.bg_new:
 			var bg = Control.new()
-			bg.set_size( get_viewport().get_rect().size )
+			bg.set_size( get_viewport().size )
 			
 			bg.set_anchor_and_margin( MARGIN_LEFT, ANCHOR_BEGIN, 0 )
 			bg.set_anchor_and_margin( MARGIN_TOP, ANCHOR_BEGIN, 0 )
@@ -89,8 +89,8 @@ func _interpret():
 			var image = _stack_pop()
 			
 			image.set_expand( true )
-			image.set_stretch_mode( TextureFrame.STRETCH_KEEP_ASPECT_COVERED )
-			image.set_size( get_viewport().get_rect().size )
+			image.set_stretch_mode( TextureRect.STRETCH_KEEP_ASPECT_COVERED )
+			image.set_size( get_viewport().size )
 			
 			image.set_anchor_and_margin( MARGIN_LEFT, ANCHOR_BEGIN, 0 )
 			image.set_anchor_and_margin( MARGIN_TOP, ANCHOR_BEGIN, 0 )
@@ -109,10 +109,10 @@ func _interpret():
 				image.show()
 		elif opcode == Opcode.chara_new:
 			var chara = Control.new()
-			var center_below = get_viewport().get_rect().size
+			var center_below = get_viewport().size
 			center_below.x /= 2
 			
-			chara.set_pos( center_below )
+			chara.rect_position = center_below
 			get_node("chara_layer").add_child(chara)
 			
 			_stack.push_back(chara)
@@ -124,7 +124,7 @@ func _interpret():
 			chara.add_child(face_image)
 			
 			var face_image_size = face_image.get_size()
-			face_image.set_pos(Vector2(-face_image_size.x/2, -face_image_size.y))
+			face_image.rect_position = Vector2(-face_image_size.x/2, -face_image_size.y)
 		elif opcode == Opcode.chara_show:
 			var chara = _stack_pop()
 			
